@@ -85,9 +85,9 @@ public abstract class CrudController<S extends CrudService<T, Long>, DTO, T exte
     })
     @GetMapping("/{id}")
     @Transactional
-    public ResponseEntity<DTO> getElementById(@PathVariable(value = "id") Long elementId) {
-        Optional<T> element = service.findById(elementId);
-        return element.map(t -> ResponseEntity.ok(convertToDetailDto(t))).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<DTO> getElementById(@PathVariable Long id) {
+        Optional<T> element = service.findById(id);
+        return buildResponseEntityFromOptional(element);
     }
 
     @Operation(summary = "Create a new element")
@@ -118,10 +118,10 @@ public abstract class CrudController<S extends CrudService<T, Long>, DTO, T exte
     })
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity<DTO> updateElement(@PathVariable(value = "id") Long elementId, @Valid @RequestBody DTO element) {
+    public ResponseEntity<DTO> updateElement(@PathVariable Long id, @Valid @RequestBody DTO element) {
         T converted = convertToModel(element);
-        Optional<T> elementUpdated = service.updateElement(elementId, converted);
-        return elementUpdated.map(t -> ResponseEntity.ok(convertToDetailDto(t))).orElseGet(() -> ResponseEntity.notFound().build());
+        Optional<T> elementUpdated = service.updateElement(id, converted);
+        return buildResponseEntityFromOptional(elementUpdated);
     }
 
     @Operation(summary = "Delete a element")
@@ -130,8 +130,8 @@ public abstract class CrudController<S extends CrudService<T, Long>, DTO, T exte
             @ApiResponse(responseCode = "404", description = "Element not found", content = @Content)
     })
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteElement(@PathVariable(value = "id") Long elementId) {
-        boolean success = service.deleteElement(elementId);
+    public ResponseEntity<Void> deleteElement(@PathVariable Long id) {
+        boolean success = service.deleteElement(id);
         if (success) {
             return ResponseEntity.noContent().build();
         }
@@ -143,4 +143,8 @@ public abstract class CrudController<S extends CrudService<T, Long>, DTO, T exte
     protected abstract DTO convertToDetailDto(T element);
 
     protected abstract T convertToModel(DTO dto);
+
+    protected ResponseEntity<DTO> buildResponseEntityFromOptional(Optional<T> element) {
+        return element.map(t -> ResponseEntity.ok(convertToDetailDto(t))).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }

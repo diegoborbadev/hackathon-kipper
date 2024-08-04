@@ -30,11 +30,27 @@ public class UserController extends CrudController<UserService, UserDto, User> {
     })
     @PatchMapping("/{id}")
     @Transactional
-    public ResponseEntity<UserDto> updateElement(@PathVariable(value = "id") Long elementId,
+    public ResponseEntity<UserDto> updateElement(@PathVariable Long id,
                                                  @Parameter(description = "New name", required = true) @RequestParam String name) {
 
-        Optional<User> userOptional = service.updateName(elementId, name);
-        return userOptional.map(user -> ResponseEntity.ok(convertToDetailDto(user))).orElseGet(() -> ResponseEntity.notFound().build());
+        Optional<User> updatedUser = service.updateName(id, name);
+        return buildResponseEntityFromOptional(updatedUser);
+    }
+
+    @Operation(summary = "Update name")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Element updated", content = {
+                    @Content(mediaType = "application/json")
+            }),
+            @ApiResponse(responseCode = "404", description = "Element not found", content = @Content)
+    })
+    @PatchMapping("/{id}/score/add")
+    public ResponseEntity<UserDto> addScore(@PathVariable Long id,
+                                            @Parameter(description = "Score to be added to (or removed from) the user's total score", required = true)
+                                                @RequestParam Long value) {
+
+        Optional<User> updatedUser = service.addScore(id, value);
+        return buildResponseEntityFromOptional(updatedUser);
     }
 
     @Override
