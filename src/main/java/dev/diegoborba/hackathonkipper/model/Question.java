@@ -1,8 +1,7 @@
 package dev.diegoborba.hackathonkipper.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import dev.diegoborba.hackathonkipper.model.enums.QuestionCategory;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -23,4 +22,8 @@ public class Question extends IdentityGeneratorEntity<Long> {
 
     @Column(nullable = false)
     private String wrongAnswer3;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private QuestionCategory category;
 }

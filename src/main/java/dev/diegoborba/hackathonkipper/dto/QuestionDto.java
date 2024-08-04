@@ -1,7 +1,9 @@
 package dev.diegoborba.hackathonkipper.dto;
 
+import dev.diegoborba.hackathonkipper.model.enums.QuestionCategory;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -28,4 +30,8 @@ public class QuestionDto {
     @Schema(description = "Wrong Answer 3", example = "Earthworm")
     @NotBlank(message = "Filling in 'wrongAnswer3' is mandatory")
     private String wrongAnswer3;
+
+    @Schema(description = "Question Category", example = "NATURE")
+    @NotNull(message = "Filling in 'category' is mandatory")
+    private QuestionCategory category;
 }
