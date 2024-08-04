@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/users")
 @AllArgsConstructor
 public class UserController extends CrudController<UserService, UserDto, User> {
