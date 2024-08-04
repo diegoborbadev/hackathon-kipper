@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -20,11 +21,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public abstract class CrudController<S extends CrudService<T, Long>, DTO, T extends BaseModel<Long>> {
+
+    protected final Type DTO_LIST_TYPE_TOKEN = new TypeToken<List<DTO>>(){}.getType();
 
     @Autowired
     protected ModelMapper modelMapper;
@@ -34,7 +38,9 @@ public abstract class CrudController<S extends CrudService<T, Long>, DTO, T exte
 
     @Operation(summary = "Get all elements")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the elements"),
+            @ApiResponse(responseCode = "200", description = "Found the elements", content = {
+                    @Content(mediaType = "application/json")
+            }),
             @ApiResponse(responseCode = "204", description = "No items found", content = @Content)
     })
     @GetMapping("/all")

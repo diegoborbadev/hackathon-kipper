@@ -22,8 +22,6 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserController extends CrudController<UserService, UserDto, User> {
 
-    private static final TypeToken<List<UserDto>> DTO_LIST_TYPE_TOKEN = new TypeToken<>() {};
-
     @Operation(summary = "Update name")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Element updated", content = {
@@ -42,7 +40,7 @@ public class UserController extends CrudController<UserService, UserDto, User> {
 
     @Override
     protected List<UserDto> convertToListDto(List<User> elements) {
-        return modelMapper.map(elements, DTO_LIST_TYPE_TOKEN.getType());
+        return modelMapper.map(elements, DTO_LIST_TYPE_TOKEN);
     }
 
     @Override
