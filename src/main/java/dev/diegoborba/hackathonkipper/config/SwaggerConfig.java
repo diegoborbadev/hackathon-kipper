@@ -16,16 +16,10 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI info() {
-        final var license = new License()
-                .name(property.license())
-                .url(property.licenseUrl());
-
         final var info = new Info()
                 .title(property.name())
                 .version(property.version())
-                .description(property.description())
-                .license(license);
-
+                .description(property.description());
         return new OpenAPI().info(info);
     }
 }

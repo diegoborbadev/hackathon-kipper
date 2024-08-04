@@ -15,14 +15,19 @@
     <name>hackathon-kipper</name>
     <description>hackathon-kipper desc</description>
 
-    <!-- TODO -->
-    <licenses>
-        <license/>
-    </licenses>
-
-    <!-- TODO -->
     <developers>
-        <developer/>
+        <developer>
+            <id>diegoborbadev</id>
+            <name>Diego Borba (Dig Dev)</name>
+            <email>contact@diegoborba.dev</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>-3</timezone>
+            <properties>
+                <birthday>2004-06-25</birthday>
+            </properties>
+        </developer>
     </developers>
 
     <properties>

@@ -8,8 +8,6 @@ public record ApplicationProperties(
         String version,
         String javaVersion,
         String description,
-        String encoding,
-        String license,
-        String licenseUrl
+        String encoding
 ) {
 }
