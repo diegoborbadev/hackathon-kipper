@@ -22,8 +22,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserController extends CrudController<UserService, UserDto, User> {
 
-    private static final TypeToken<List<UserDto>> DTO_LIST_TYPE_TOKEN = new TypeToken<>() {
-    };
+    private static final TypeToken<List<UserDto>> DTO_LIST_TYPE_TOKEN = new TypeToken<>() {};
 
     @Operation(summary = "Update name")
     @ApiResponses(value = {
