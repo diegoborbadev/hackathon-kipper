@@ -63,6 +63,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- H2 Database Engine (for tests) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- Facilitates the development of web applications including RESTful applications using Spring MVC -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -102,6 +110,10 @@
             <artifactId>modelmapper</artifactId>
             <version>2.4.3</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
     </dependencies>
 
