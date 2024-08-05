@@ -45,6 +45,7 @@ public abstract class CrudServiceJpaImpl<L extends JpaRepository<T, ID>, T exten
     @Override
     @Transactional
     public List<T> createElements(List<T> elements) {
+        elements.forEach(e -> e.setId(null));
         return repository.saveAll(elements);
     }
 
