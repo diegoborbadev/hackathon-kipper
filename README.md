@@ -14,7 +14,11 @@ Desenvolvimento de um aplicativo voltado para crianças a partir de 8 anos, util
 Mais informações: [Documentação do Projeto](https://docs.google.com/document/d/e/2PACX-1vQtuBMFqQ1U8NtH_M-_C7r8FRSy3qpbJkfUGd2VsyXW8csGsKTK8a3OunEjvIfYevETNVbWGCOLy8JD/pub)
 
 ## Desenvolvimento
-Está é uma *API* desenvolvida utilizando *Java 17* com o framework *SpringBoot 3.3.2* e build da aplicação utilizando *Apache Maven 3.8.7*. Para a camada de dados foi utulizado o *PostgreSQL 14.2*, e *H2 Database* para testes unitários. E por fim, para a documentação da API foi utilizado o *Swagger 3*, inclusive, o [*Swagger de produção pode ser acessado*](http://165.227.218.157:8080/swagger-ui/index.html#/).
+Está é uma *API* desenvolvida utilizando *Java 17* com o framework *SpringBoot 3.3.2* e build da aplicação utilizando *Apache Maven 3.8.7*. 
+
+Para a camada de dados foi utulizado o *PostgreSQL 14.2*, e *H2 Database* para testes unitários. 
+
+E por fim, para a documentação da API foi utilizado o *Swagger 3*, inclusive, o [*Swagger de produção pode ser acessado*](http://165.227.218.157:8080/swagger-ui/index.html#/).
 
 # Executando o projeto
 ## Pré-requisitos
