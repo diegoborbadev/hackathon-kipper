@@ -22,7 +22,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserController extends CrudController<UserService, UserDto, User> {
 
-    @Operation(summary = "Update name")
+    @Operation(summary = "Update user name")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Element updated", content = {
                     @Content(mediaType = "application/json")
@@ -38,7 +38,7 @@ public class UserController extends CrudController<UserService, UserDto, User> {
         return buildResponseEntityFromOptional(updatedUser);
     }
 
-    @Operation(summary = "Update name")
+    @Operation(summary = "Update user score")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Element updated", content = {
                     @Content(mediaType = "application/json")
