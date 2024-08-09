@@ -2,7 +2,7 @@
 
 <p align="center">
   <h1 align="center">🌿 Projeto Eco Amigos (Backend)</h1>
-  <p align="center">Idealizado e implementado no <i><a href="https://github.com/omidnikrah/github-readme-stackoverflow">Hackathon KipperDev 2024</a></i></p>
+  <p align="center">Idealizado e implementado no <i><a href="https://github.com/Fernanda-Kipper/hackathon-2024">Hackathon KipperDev 2024</a></i></p>
 </p>
 
 <br>
